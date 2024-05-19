@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <limits.h>
 
 int	main(void)
 {
-	char	*str = "Free the duck!\n";
-	int	nbr = 1000;
-	void	*ptr = &nbr;
+	char	*str = "Hello World";
+	int	nbr = 20;
+	int	*ptr = &nbr;
 
-	printf("test % k\n", ptr);
-	printf("%%\n", &nbr);
+	printf("%p\n", nbr);
+	printf("%#x\n", *ptr);
 }

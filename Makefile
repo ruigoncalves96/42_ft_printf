@@ -3,9 +3,9 @@ CFLAGS = -Wall -Wextra -Werror
 LIBC = ar rcs
 RM = rm -f
 
-NAME = libftprintff.a
+NAME = libftprintf.a
 
-SRC =
+SRC = ft_printf.c ft_putf.c ft_printf_utils.c
 
 OBJ = $(SRC:.c=.o) 
 
@@ -17,11 +17,14 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+test: all			# REMOVE TEST!!!!!! #
+	$(CC) main.c $(NAME)	#####################
+
 clean:
 	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) a.out	# REMOVE A.OUT #
 
 re: fclean all
 
