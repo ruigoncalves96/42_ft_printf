@@ -6,7 +6,7 @@
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:01:54 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/19 10:58:31 by randrade         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:41:25 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	ft_nbrlen(long int nbr)
+int	ft_nbrlen(long nbr)
 {
 	int	i;
 
