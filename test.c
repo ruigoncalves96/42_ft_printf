@@ -5,5 +5,5 @@
 
 int	main(void)
 {
-	printf("%d\n", 20, 20);
+	printf("Free the % vuck");
 }

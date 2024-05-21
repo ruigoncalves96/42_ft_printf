@@ -6,37 +6,16 @@
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:02:02 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/20 17:15:58 by randrade         ###   ########.fr       */
+/*   Updated: 2024/05/21 16:13:06 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
-static int	check_format(char *str, va_list ap)
-{
-	if (
-	while (*str)
-	{
-		if (*str == '%')
-		{
-			str++;
-			if ()
-				format++;
-		}
-		str++;
-	}
-	while (va_arg(ap, void))
-		arg++;
-}
-*/
+
 static int	print_format(char c, va_list *ap)
 {
-	char	*base_16_l;
-	char	*base_16_u;
-	int		nbr_print;
+	size_t		nbr_print;
 
-	base_16_l = "0123456789abcdef";
-	base_16_u = "0123456789ABCDEF";
 	nbr_print = 0;
 	if (c == 'c')
 		nbr_print += ft_putchar(va_arg(*ap, int));
@@ -49,21 +28,25 @@ static int	print_format(char c, va_list *ap)
 	else if (c == 'u')
 		nbr_print += ft_putnbr(va_arg(*ap, unsigned int));
 	else if (c == 'x')
-		nbr_print += ft_putnbr_hex(va_arg(*ap, unsigned int), base_16_l);
+		nbr_print += ft_putnbr_hex(va_arg(*ap, unsigned int), 'l');
 	else if (c == 'X')
-		nbr_print += ft_putnbr_hex(va_arg(*ap, unsigned int), base_16_u);
+		nbr_print += ft_putnbr_hex(va_arg(*ap, unsigned int), 'U');
 	else if (c == '%')
 		nbr_print += ft_putchar(c);
+	else
+	{
+		nbr_print += ft_putchar('%');
+		nbr_print += ft_putchar(c);
+	}
 	return (nbr_print);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
-	int		nbr_print;
+	size_t		nbr_print;
 
 	va_start(ap, str);
-	// CHECK FORMAT, AMOUNT OF '%' == TO VA_ARGS
 	if (str == NULL)
 		return (-1);
 	nbr_print = 0;
@@ -81,7 +64,7 @@ int	ft_printf(const char *str, ...)
 			if (!*str)
 			{
 				va_end(ap);
-				return (nbr_print);
+				return (-1);
 			}
 			nbr_print += print_format(*str, &ap);
 		}

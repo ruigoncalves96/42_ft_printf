@@ -6,7 +6,7 @@
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:06:22 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/20 15:39:07 by randrade         ###   ########.fr       */
+/*   Updated: 2024/05/21 16:05:00 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ int	ft_putstr(const char *str)
 
 int	ft_putaddress(unsigned long addr)
 {
-	int	nbr_len;
+	size_t	nbr_len;
 
 	nbr_len = 0;
 	nbr_len += ft_putstr("0x");
-	nbr_len += ft_putnbr_hex(addr, "0123456789abcdef");
+	nbr_len += ft_putnbr_hex(addr, 'l');
 	return (nbr_len);
 }
 
 int	ft_putnbr(long nbr)
 {
-	int	nbr_len;
+	size_t	nbr_len;
 
 	nbr_len = ft_nbrlen(nbr);
 	if (nbr < 0)
@@ -71,22 +71,27 @@ int	ft_putnbr(long nbr)
 	return (nbr_len);
 }
 
-int	ft_putnbr_hex(unsigned long nbr, char *base)
+int	ft_putnbr_hex(unsigned long nbr, const char lower_upper)
 {
-	size_t	base_len;
-	size_t	nbr_len;
+	const char	*base_16_l = "0123456789abcdef";
+	const char	*base_16_u = "0123456789ABCDEF";
+	const char	*base;
+	size_t		nbr_len;
 
-	base_len = ft_strlen(base);
+	if (lower_upper == 'l')
+		base = base_16_l;
+	else if (lower_upper == 'U')
+		base = base_16_u;
 	nbr_len = 0;
-	if (nbr < base_len)
+	if (nbr < 16)
 	{
 		nbr_len += ft_putchar(nbr[base]);
 		return (nbr_len);
 	}
 	else
 	{
-		nbr_len += ft_putnbr_hex(nbr / base_len, base);
-		nbr_len += ft_putnbr_hex(nbr % base_len, base);
+		nbr_len += ft_putnbr_hex(nbr / 16, lower_upper);
+		nbr_len += ft_putnbr_hex(nbr % 16, lower_upper);
 	}
 	return (nbr_len);
 }
