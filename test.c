@@ -5,5 +5,7 @@
 
 int	main(void)
 {
-	printf("Free the % vuck");
+	printf("%d\n", 2147483648);
+	printf("%li\n", LONG_MAX);
+	printf("%lu\n", ULONG_MAX);
 }

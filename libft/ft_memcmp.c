@@ -1,49 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 16:01:54 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/20 15:41:25 by randrade         ###   ########.fr       */
+/*   Created: 2024/04/15 17:52:52 by randrade          #+#    #+#             */
+/*   Updated: 2024/04/17 15:15:22 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_strlen(char *str)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int	ft_nbrlen(long nbr)
-{
-	int	i;
-
-	if (nbr == 0)
-		return (1);
-	if (nbr < 0)
-		nbr *= -1;
-	i = 0;
-	while (nbr > 0)
+	while (n--)
 	{
-		nbr /= 10;
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 		i++;
 	}
-	return (i);
+	return (0);
 }
+/*
+#include <stdio.h>
+#include <string.h>
 
-char	*ft_strchr(const char *s, int c)
+int	main(void)
 {
-	while (*s != (unsigned char)c && *s)
-		s++;
-	if (*s != (unsigned char)c)
-		return (NULL);
-	return ((char *)s);
-}
+	char	*str1 = NULL;
+	char	*str2 = NULL;
+
+	printf("%d\n", memcmp(str1, str2, 3));
+	printf("%d\n", ft_memcmp(str1, str2, 3));
+}*/

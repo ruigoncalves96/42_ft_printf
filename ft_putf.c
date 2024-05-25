@@ -6,7 +6,7 @@
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:06:22 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/21 16:05:00 by randrade         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:11:50 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ int	ft_putnbr(long nbr)
 	nbr_len = ft_nbrlen(nbr);
 	if (nbr < 0)
 	{
-		if (nbr == -2147483648)
-			return (ft_putstr("-2147483648"));
 		nbr *= -1;
 		nbr_len += ft_putchar('-');
 	}
@@ -78,11 +76,11 @@ int	ft_putnbr_hex(unsigned long nbr, const char lower_upper)
 	const char	*base;
 	size_t		nbr_len;
 
+	nbr_len = 0;
 	if (lower_upper == 'l')
 		base = base_16_l;
 	else if (lower_upper == 'U')
 		base = base_16_u;
-	nbr_len = 0;
 	if (nbr < 16)
 	{
 		nbr_len += ft_putchar(nbr[base]);

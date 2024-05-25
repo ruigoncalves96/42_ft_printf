@@ -5,26 +5,32 @@ RM = rm -f
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c ft_putf.c ft_printf_utils.c
+LIBFT_PATH = ./libft
+LIBFT = $(LIBFT_PATH)/libft.a
 
+SRC = ft_printf.c ft_putf.c
 OBJ = $(SRC:.c=.o) 
-
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	   $(LIBC) $(NAME) $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-test: all			# REMOVE TEST!!!!!! #
-	$(CC) main.c $(NAME)	#####################
+all: $(NAME)
+
+$(NAME): $(LIBFT) $(OBJ)
+	cp $(LIBFT) $(NAME)
+	$(LIBC) $(NAME) $(OBJ)
+	ranlib $(NAME)
+
+$(LIBFT):
+	make -C $(LIBFT_PATH)
 
 clean:
+	make -C $(LIBFT_PATH) clean
 	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME) a.out	# REMOVE A.OUT #
+	make -C $(LIBFT_PATH) fclean
+	$(RM) $(NAME)
 
 re: fclean all
 

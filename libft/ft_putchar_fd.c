@@ -1,32 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 15:55:54 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/25 17:06:34 by randrade         ###   ########.fr       */
+/*   Created: 2024/04/24 12:32:16 by randrade          #+#    #+#             */
+/*   Updated: 2024/04/24 12:37:03 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <unistd.h>
-# include <stdarg.h>
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+/*
+#include <stdio.h>
 
-// ---------- ft_printf.c ----------
+int	main(void)
+{
+	ft_putchar_fd('a', 1);
+}
+*/
+/*
 
-int	ft_printf(const char *str, ...);
+----- Parameters -----
 
-// ---------- ft_putf.c ----------
+	c: The character to output.
+	fd: The file descriptor on which to write.
 
-int	ft_putchar(char c);
-int	ft_putstr(const char *str);
-int	ft_putaddress(unsigned long addr);
-int	ft_putnbr(long nbr);
-int	ft_putnbr_hex(unsigned long nbr, const char lower_upper);
+----- Return Value -----
 
-#endif
+	None.
+
+----- Write -----
+
+	write.
+
+----- Description -----
+
+	Outputs the character ’c’ to the given file descriptor.
+
+*/

@@ -6,11 +6,13 @@
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 20:22:24 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/21 18:31:08 by randrade         ###   ########.fr       */
+/*   Updated: 2024/05/25 17:07:44 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <limits.h>
+#include <stdio.h>
 
 int	main(void)
 {       
