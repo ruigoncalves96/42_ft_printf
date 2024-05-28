@@ -6,31 +6,31 @@
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:02:02 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/24 17:36:57 by randrade         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:20:31 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	print_specifier(char c, va_list *ap)
+static int	print_specifier(char c, va_list ap)
 {
 	size_t		nbr_print;
 
 	nbr_print = 0;
 	if (c == 'c')
-		nbr_print += ft_putchar(va_arg(*ap, int));
+		nbr_print += ft_putchar(va_arg(ap, int));
 	else if (c == 's')
-		nbr_print += ft_putstr(va_arg(*ap, char *));
+		nbr_print += ft_putstr(va_arg(ap, char *));
 	else if (c == 'p')
-		nbr_print += ft_putaddress(va_arg(*ap, unsigned long));
+		nbr_print += ft_putaddress(va_arg(ap, unsigned long));
 	else if (c == 'd' || c == 'i')
-		nbr_print += ft_putnbr(va_arg(*ap, int));
+		nbr_print += ft_putnbr(va_arg(ap, int));
 	else if (c == 'u')
-		nbr_print += ft_putnbr(va_arg(*ap, unsigned int));
+		nbr_print += ft_putnbr(va_arg(ap, unsigned int));
 	else if (c == 'x')
-		nbr_print += ft_putnbr_hex(va_arg(*ap, unsigned int), 'l');
+		nbr_print += ft_putnbr_hex(va_arg(ap, unsigned int), 'l');
 	else if (c == 'X')
-		nbr_print += ft_putnbr_hex(va_arg(*ap, unsigned int), 'U');
+		nbr_print += ft_putnbr_hex(va_arg(ap, unsigned int), 'U');
 	else if (c == '%')
 		nbr_print += ft_putchar(c);
 	else
@@ -53,7 +53,7 @@ static int	check_str(const char *str, va_list ap)
 			str++;
 			if (!*str)
 				return (-1);
-			nbr_print += print_specifier(*str, &ap);
+			nbr_print += print_specifier(*str, ap);
 		}
 		else
 			nbr_print += ft_putchar(*str);
