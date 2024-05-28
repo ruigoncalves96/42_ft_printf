@@ -6,7 +6,7 @@
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 20:22:24 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/25 17:07:44 by randrade         ###   ########.fr       */
+/*   Updated: 2024/05/28 16:24:30 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,4 +199,6 @@ int	main(void)
 	printf("15. Free the %v duck : ");
 	real = printf("Free the %v duck");
 	printf("\nreturn: %d\n", real);
+
+	return (0);
 }

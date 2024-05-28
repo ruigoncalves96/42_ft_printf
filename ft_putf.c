@@ -6,7 +6,7 @@
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:06:22 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/24 17:11:50 by randrade         ###   ########.fr       */
+/*   Updated: 2024/05/28 16:20:13 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_putaddress(unsigned long addr)
 {
 	size_t	nbr_len;
 
+	if (addr == 0)
+		return (ft_putstr("(nil)"));
 	nbr_len = 0;
 	nbr_len += ft_putstr("0x");
 	nbr_len += ft_putnbr_hex(addr, 'l');
