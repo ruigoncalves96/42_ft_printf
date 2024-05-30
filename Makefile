@@ -19,7 +19,6 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OBJ)
 	cp $(LIBFT) $(NAME)
 	$(LIBC) $(NAME) $(OBJ)
-	ranlib $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH)
