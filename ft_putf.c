@@ -6,7 +6,7 @@
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:06:22 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/30 12:05:00 by randrade         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:09:59 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_putstr(const char *str)
 	i = 0;
 	while (str[i])
 	{
-		t_putchar(str[i]);
+		ft_putchar(str[i]);
 		i++;
 	}
 	return (i);

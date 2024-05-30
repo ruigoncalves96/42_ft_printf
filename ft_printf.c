@@ -6,7 +6,7 @@
 /*   By: randrade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:02:02 by randrade          #+#    #+#             */
-/*   Updated: 2024/05/30 12:01:03 by randrade         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:18:34 by randrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ static int	print_specifier(char c, va_list *ap)
 	else if (c == '%')
 		nbr_print += ft_putchar(c);
 	else
-	{
-		nbr_print += ft_putchar('%');
-		nbr_print += ft_putchar(c);
-	}
+		nbr_print += ft_putchar('%') + ft_putchar(c);
 	return (nbr_print);
 }
 
